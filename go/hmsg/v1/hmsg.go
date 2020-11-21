@@ -292,7 +292,7 @@ func (it *MailManager) TemplateSet(set *MailTemplateEntry) error {
 
 		entry.Items = append(entry.Items, item)
 
-		key := fmt.Sprintf("%s_%s", set.Name, v.Lang)
+		key := strings.ToLower(fmt.Sprintf("%s_%s", set.Name, v.Lang))
 
 		it.tpls[key] = item
 	}
@@ -322,7 +322,7 @@ func (it *MailManager) TemplateRender(name string, lang string, data interface{}
 	for _, v := range langs {
 
 		//
-		key := fmt.Sprintf("%s_%s", name, v)
+		key := strings.ToLower(fmt.Sprintf("%s_%s", name, v))
 		tpl, ok := it.tpls[key]
 		if !ok {
 			continue
