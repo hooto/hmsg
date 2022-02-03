@@ -224,7 +224,7 @@ func (it *MailManager) fsWalk(fs http.FileSystem, dir string) error {
 				return err
 			}
 			var tplEntry MailTemplateEntry
-			if err := htoml.Decode(&tplEntry, buf.Bytes()); err == nil {
+			if err := htoml.Decode(buf.Bytes(), &tplEntry); err == nil {
 				it.TemplateSet(&tplEntry)
 			}
 		}
